@@ -1,4 +1,5 @@
 if (typeof(BOARD) === 'undefined') {
+
   var BOARD = {
     palaces: { 
       red: {},
@@ -9,6 +10,7 @@ if (typeof(BOARD) === 'undefined') {
       black: {}
     }
   };
+
   (function() {
     for (var file = 0; file < 9; file += 1 ) {
       for (var rank = 1; rank <= 10; rank += 1) {
@@ -21,6 +23,7 @@ if (typeof(BOARD) === 'undefined') {
         }
       }
     }
+
     for (var file = 0; file < 3; file += 1) {
       for (var rank = 1; rank <= 3; rank += 1) {
         BOARD.palaces.red[('def')[file] + rank] = true;
@@ -28,18 +31,17 @@ if (typeof(BOARD) === 'undefined') {
       }
     }
   })();
+
   Object.defineProperties(BOARD, {
-    palaces: {
-      enumerable: false
-    },
-    continents: {
-      enumerable: false
-    }
+    palaces: { enumerable: false },
+    continents: { enumerable: false }
   });
 }
+Object.freeze(BOARD);
 
 var chessSet = {
 
+  chariot
 }
 
 function Game() {
