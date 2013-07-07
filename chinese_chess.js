@@ -93,7 +93,7 @@ Object.freeze(CHESSMEN)
 
 function Game() {
 
-  for (piece in CHESSMEN) {
+  for (var piece in CHESSMEN) {
     eval('var ' + piece + ' = CHESSMEN.' + piece);
   }
 
@@ -132,7 +132,23 @@ function Game() {
     i7: new Soldier('black')
   };
 
-  return {
-    board: board
-  };
+  function move(start, end) {
+    var piece = board[start];
+    board[end] = piece;
+    delete board[start];
+  }
+
+  Object.defineProperties(this, {
+    board: {
+      get: function() {
+        return board;
+      },
+      set: function() {
+        board = arguments[0];
+      }
+    },
+    move: {
+      value: function() { move.apply(this, arguments); }
+    }
+  });
 }
