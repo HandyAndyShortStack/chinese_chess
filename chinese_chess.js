@@ -12,21 +12,30 @@ if (typeof(BOARD) === 'undefined') {
   };
 
   (function() {
-    for (var file = 0; file < 9; file += 1 ) {
+
+    function Square(file, rank) {
+      this.name = ' abcdefghi'[file] + rank;
+      this.file = file;
+      this.rank = rank;
+    }
+
+    for (var file = 1; file <= 9; file += 1 ) {
       for (var rank = 1; rank <= 10; rank += 1) {
-        var square = ('abcdefghi')[file] + rank;
-        BOARD[square] = true;
+        var square = new Square(file, rank);
+        BOARD[square.name] = new Square(file, rank);
         if (rank <= 5) {
-          BOARD.continents.red[square] = true;
+          BOARD.continents.red[square.name] = square;
         } else {
-          BOARD.continents.black[square] = true;
+          BOARD.continents.black[square.name] = square;
         }
       }
     }
-    for (var file = 0; file < 3; file += 1) {
+    for (var file = 4; file <= 6; file += 1) {
       for (var rank = 1; rank <= 3; rank += 1) {
-        BOARD.palaces.red[('def')[file] + rank] = true;
-        BOARD.palaces.black[('def')[file] + (rank + 7)] = true;
+        red_square = new Square(file, rank);
+        black_square = new Square(file, rank);
+        BOARD.palaces.red[red_square.name] = red_square;
+        BOARD.palaces.black[black_square.name] = black_square;
       }
     }
   })();
@@ -38,7 +47,7 @@ if (typeof(BOARD) === 'undefined') {
 }
 Object.freeze(BOARD);
 
-CHESSMEN = {
+var CHESSMEN = {
 
   Chariot: function(color) {
     return {
@@ -138,17 +147,35 @@ function Game() {
     delete board[start];
   }
 
+  function legalMoves(square) {
+    var piece = board[square];
+    switch (piece.abbreviation) {
+      case 'R':
+        return getChariotRange(square);
+      case 'H':
+        return getHorseRange(square);
+      case 'E':
+        return getElephantRange(square);
+      case 'A':
+        return getAdvisorRange(square);
+      case 'G':
+        return getGeneralRange(square);
+      case 'C':
+        return getCannonRange(square);
+      case 'S':
+        return getSoldierRange(square);
+    }
+  }
+
+  function getChariotRange(square) {
+
+  }
+
   Object.defineProperties(this, {
     board: {
-      get: function() {
-        return board;
-      },
-      set: function() {
-        board = arguments[0];
-      }
+      get: function() { return board; },
+      set: function() { board = arguments[0]; }
     },
-    move: {
-      value: function() { move.apply(this, arguments); }
-    }
+    move: { value: function() { move.apply(this, arguments); } }
   });
 }
