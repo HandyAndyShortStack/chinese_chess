@@ -23,6 +23,7 @@ Test.runAll = function() {
   for (var i = 0; i < Test.tests.length; i += 1) {
     Test.tests[i].run();
   }
+  Object.freeze(Test.tests);
 };
 function assert(statement) {
   if (!statement) {
