@@ -174,7 +174,7 @@ function Game(board, toMove) {
     toggleMove();
   }
 
-  function legalMoves(square) {
+  function getRange(square) {
     var piece = board[square];
     switch (piece.abbreviation) {
       case 'R':
@@ -192,6 +192,28 @@ function Game(board, toMove) {
       case 'S':
         return getSoldierRange(square);
     }
+  }
+
+  function legalMoves(square) {
+    if (!board[square] || toMove !== board[square].color) {
+      return [];
+    }
+    var range = getRange(square);
+    var moves = [];
+    for (var i = 0; i < range.length; i += 1) {
+      var target = range[i];
+      if (toMove === 'red') {
+        var opponent = 'black';
+      } else {
+        var opponent = 'red';
+      }
+      var position = new Game(clone(board), opponent);
+      position.move(square, target);
+      if (!position.isCheck) {
+        moves.push(target);
+      }
+    }
+    return moves;
   }
 
   var DIRECTIONS = ['left', 'right', 'up', 'down'];
@@ -330,6 +352,7 @@ function Game(board, toMove) {
             hopped = true;
           } else if (board[current_square.name].color !== piece.color) {
             range.push(current_square.name);
+            break;
           }
         } else if (!hopped) {
           range.push(current_square.name);
@@ -365,6 +388,23 @@ function Game(board, toMove) {
     return range;
   }
 
+  function isCheck() {
+    for (square in board) {
+      var candidate = board[square];
+      if (candidate.abbreviation === 'G' && candidate.color === toMove) {
+        var generalSquare = square;
+        break;
+      }
+    }
+    for (square in board) {
+      if (board[square].color !== toMove &&
+        getRange(square).indexOf(generalSquare) !== -1) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   Object.defineProperties(this, {
     board: {
       get: function() { return board; },
@@ -376,6 +416,16 @@ function Game(board, toMove) {
         return legalMoves.apply(this, arguments); 
       }
     },
-    toMove: { get: function() { return toMove; } }
+    toMove: { get: function() { return toMove; } },
+    isCheck: { get: function() { return isCheck(); } }
   });
+}
+
+function clone(obj) {
+  if (null === obj || "object" !== typeof(obj)) return obj;
+  var copy = obj.constructor();
+  for (var attr in obj) {
+    if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+  }
+  return copy;
 }
