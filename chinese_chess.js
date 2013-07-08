@@ -316,6 +316,29 @@ function Game(board, toMove) {
     return range;
   }
 
+  function getCannonRange(square) {
+    var range = [];
+    var piece = board[square];
+    for (var i = 0; i < 4; i += 1) {
+      var direction = DIRECTIONS[i];
+      var current_square = BOARD[square];
+      var hopped = false;
+      while (current_square[direction]) {
+        current_square = current_square[direction];
+        if (board[current_square.name]) {
+          if (!hopped) {
+            hopped = true;
+          } else if (board[current_square.name].color !== piece.color) {
+            range.push(current_square.name);
+          }
+        } else if (!hopped) {
+          range.push(current_square.name);
+        }
+      }
+    }
+    return range;
+  }
+
   Object.defineProperties(this, {
     board: {
       get: function() { return board; },
