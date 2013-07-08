@@ -167,6 +167,15 @@ function Game(board, toMove) {
     }
   }
 
+  function getForward(color) {
+    var color = color || toMove;
+    if (color === 'red') {
+      return 'up';
+    } else {
+      return 'down';
+    }
+  }
+
   function move(start, end) {
     var piece = board[start];
     board[end] = piece;
@@ -365,11 +374,7 @@ function Game(board, toMove) {
   function getSoldierRange(square) {
     var range = [];
     var piece = board[square];
-    if (piece.color === 'red') {
-      var forward = 'up';
-    } else {
-      var forward = 'down';
-    }
+    var forward = getForward(piece.color);
     if (BOARD[square][forward] && 
       (!board[BOARD[square][forward].name] || 
       board[BOARD[square][forward].name].color !== piece.color)) {
@@ -389,12 +394,23 @@ function Game(board, toMove) {
   }
 
   function isCheck() {
+    var forward = getForward();
     for (square in board) {
       var candidate = board[square];
       if (candidate.abbreviation === 'G' && candidate.color === toMove) {
         var generalSquare = square;
         break;
       }
+    }
+    var current_square = BOARD[generalSquare];
+    while (current_square[forward]) {
+      if (board[current_square[forward].name]) {
+        if(board[current_square[forward].name].abbreviation === 'G') {
+          return true;
+        }
+        break;
+      }
+      current_square = current_square[forward];
     }
     for (square in board) {
       if (board[square].color !== toMove &&
