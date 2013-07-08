@@ -339,6 +339,32 @@ function Game(board, toMove) {
     return range;
   }
 
+  function getSoldierRange(square) {
+    var range = [];
+    var piece = board[square];
+    if (piece.color === 'red') {
+      var forward = 'up';
+    } else {
+      var forward = 'down';
+    }
+    if (BOARD[square][forward] && 
+      (!board[BOARD[square][forward].name] || 
+      board[BOARD[square][forward].name].color !== piece.color)) {
+      range.push(BOARD[square][forward].name);
+    }
+    if (!BOARD.continents[piece.color][square]) {
+      for (var i = 0; i < 2; i += 1) {
+        var direction = DIRECTIONS[i];
+        if (BOARD[square][direction] && 
+          (!board[BOARD[square][direction].name] || 
+          board[BOARD[square][direction].name].color !== piece.color)) {
+          range.push(BOARD[square][direction].name);
+        }   
+      }
+    }
+    return range;
+  }
+
   Object.defineProperties(this, {
     board: {
       get: function() { return board; },
