@@ -194,10 +194,13 @@ function Game(board, toMove) {
     }
   }
 
+  var DIRECTIONS = ['left', 'right', 'up', 'down'];
+
   function getChariotRange(square) {
     var range = [];
+
     for (var i = 0; i < 4; i += 1) {
-      var direction = (['left', 'right', 'up', 'down'])[i];
+      var direction = DIRECTIONS[i];
       var current_square = BOARD[square];
       while (current_square[direction]) {
         current_square = current_square[direction];
@@ -265,6 +268,48 @@ function Game(board, toMove) {
     for (var target in elephantMap[square]) {
       if (!board[elephantMap[square][target].block] &&
         !(board[target] && board[target].color === board[square].color)) {
+        range.push(target);
+      }
+    }
+    return range;
+  }
+
+  var advisorMap = {
+    d1: ['e2'],
+    d3: ['e2'],
+    e2: ['d1', 'd3', 'f1', 'f3'],
+    f1: ['e2'],
+    f3: ['e2'],
+    d8: ['e9'],
+    d10: ['e9'],
+    e9: ['d8', 'd10', 'f8', 'f10'],
+    f8: ['e9'],
+    f10: ['e9']
+  }
+
+  function getAdvisorRange(square) {
+    for (var i = 0; i < advisorMap[square].length; i += 1) {
+      var range = [];
+      var target = advisorMap[square][i];
+      if (!board[target] || board[target].color !== board[square].color) {
+        range.push(target);
+      }
+    }
+    return range;
+  }
+
+  function getGeneralRange(square) {
+    var range = [];
+    var piece = board[square];
+    for (var i = 0; i < 4; i += 1) {
+      var direction = DIRECTIONS[i];
+      try { 
+        var target = BOARD[square][direction].name;
+      } catch (e) {
+        continue;
+      }
+      if (target && BOARD.palaces[piece.color][target] &&
+        (!board[target] || board[target].color !== board[square].color)) {
         range.push(target);
       }
     }
