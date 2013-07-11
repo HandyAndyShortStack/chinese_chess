@@ -33,4 +33,32 @@ new Test('piece movement', function() {
     game.move('e10', 'f9');
     assert (game.isCheck);
   });
+
+  new Test('games have movelists', function() {
+    var game = new Game();
+    assert (!!game.moveList);
+  });
+
+  new Test('moveLists contain moves', function() {
+    var game = new Game();
+    game.move('h3', 'e3');
+    game.move('b10', 'c8');
+    assert (!!game.moveList[0].board.e3);
+    assert (!!game.moveList[1].board.c8);
+  });
+
+  new Test('moveLists contain accurate toMoves', function() {
+    var game = new Game();
+    game.move('h3', 'e3');
+    game.move('b10', 'c8');
+    assert (game.moveList[0].toMove === 'black');
+    assert (game.moveList[1].toMove === 'red');
+  });
+
+  new Test('you can get and set toMove', function() {
+    var game = new Game();
+    game.toMove = 'black';
+    game.move('b8', 'e8');
+    assert (game.toMove === 'red');
+  })
 });

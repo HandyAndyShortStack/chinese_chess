@@ -121,6 +121,15 @@ Object.freeze(CHESSMEN)
 
 function Game(board, toMove) {
 
+  function Position(board) {
+    return {
+      board: clone(board),
+      toMove: toMove
+    };
+  }
+
+  var moveList = [];
+
   if (typeof(board) === 'undefined') {
     var board = {
       a1: CHESSMEN.Chariot('red'),
@@ -181,7 +190,12 @@ function Game(board, toMove) {
     board[end] = piece;
     delete board[start];
     toggleMove();
+    moveList.push(Position(board));
   }
+
+  var allMoves = {};
+
+  function getAllMoves
 
   function getRange(square) {
     var piece = board[square];
@@ -285,8 +299,8 @@ function Game(board, toMove) {
     g5: { e3: { block: 'f4' }, i3: { block: 'h4' } },
     i3: { g1: { block: 'h2' }, g5: { block: 'h4' } },
     a8: { c6: { block: 'b7' }, c10: { block: 'b9' } },
-    c6: {a8: { block: 'b7' }, e8: { block: 'd7' } },
-    c10: {a8: { block: 'b9' }, e8: { block: 'd9' } },
+    c6: { a8: { block: 'b7' }, e8: { block: 'd7' } },
+    c10: { a8: { block: 'b9' }, e8: { block: 'd9' } },
     e8: { c6: { block: 'd7' }, c10: { block: 'd9' },
           g6: { block: 'f7' }, g10: { block: 'f9' } },
     g6: { e8: { block: 'f7' }, i8: { block: 'h7' } },
@@ -432,8 +446,12 @@ function Game(board, toMove) {
         return legalMoves.apply(this, arguments); 
       }
     },
-    toMove: { get: function() { return toMove; } },
-    isCheck: { get: function() { return isCheck(); } }
+    toMove: { 
+      get: function() { return toMove; },
+      set: function(value) { toMove = value;  }
+    },
+    isCheck: { get: function() { return isCheck(); } },
+    moveList: { get: function() { return moveList; } },
   });
 }
 
