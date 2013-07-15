@@ -1,13 +1,14 @@
 class Square
   attr_accessor :left, :right, :up, :down
-  attr_reader :id
+  attr_reader :x, :y
 
-  def initialize id
+  def initialize x, y
+    @x = x
+    @y = y
     @left = nil
     @right = nil
     @up = nil
     @down = nil
-    @id = id
   end
 
   def point options
