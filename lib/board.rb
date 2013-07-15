@@ -13,6 +13,12 @@ class Board
     @all
   end
 
+  def find hsh
+    if @squares[hsh[:x]] && @squares[hsh[:x]][hsh[:y]]
+      @squares[hsh[:x]][hsh[:y]]
+    end
+  end
+
 private
   
   def make_squares
