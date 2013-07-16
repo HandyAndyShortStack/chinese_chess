@@ -5,16 +5,19 @@ class Square
   def initialize x, y
     @x = x
     @y = y
-    @left = nil
-    @right = nil
-    @up = nil
-    @down = nil
   end
 
-  def point options
-    options.each do |key, value|
-      self.send key.to_s + "=", value
+  def point hsh
+    hsh.each do |key, value|
+      metaclass.send(:define_method, key) { value }
     end
-    self
+  end
+
+private
+
+  def metaclass
+    class << self
+      self
+    end
   end
 end
