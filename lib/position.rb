@@ -9,11 +9,13 @@ class Position
   def place piece
     @locations[piece.x][piece.y] = piece
     @sides[piece.color] << piece
+    self
   end
 
   def all_pieces
     unless @all_pieces
       @all_pieces = @locations.values.flatten.map { |hsh| hsh.values[0] }
+      @all_pieces.compact!
     end
     @all_pieces
   end
