@@ -84,4 +84,16 @@ describe Position do
     })
     position.check?.should be(true)
   end
+
+  # it "does not allow moves that will result in check" do
+  #   position = Position.new.import({
+  #     pieces: [
+  #       General.new({x: 4, y: 0, color: :red}),
+  #       General.new({x: 4, y: 9, color: :black}),
+  #       Advisor.new({x: 4, y: 1, color: :red})
+  #     ],
+  #     to_move: :red
+  #   })
+  #   position.find(x: 4, y: 1).moves.empty?.should be(true)
+  # end
 end

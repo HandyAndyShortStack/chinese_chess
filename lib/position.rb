@@ -16,6 +16,7 @@ class Position
   end
 
   def place piece
+    piece.position = self
     @locations[piece.x][piece.y] = piece
     @sides[piece.color] << piece
     self
@@ -51,7 +52,7 @@ class Position
     export_data[:to_move] = not_to_move
     test_position = Position.new.import export_data
     general = find_general
-    return true if general.sees_other? self
+    return true if general.sees_other?
     general_coordinates = { x: general.x, y: general.y }
     test_position.all_pieces.each do |piece|
       return true if piece.moves.include? general_coordinates
@@ -74,7 +75,7 @@ private
 
   def get_moves
     all_pieces.each do |piece|
-      piece.get_moves self if piece.color == to_move
+      piece.get_moves if piece.color == to_move
     end
   end
 

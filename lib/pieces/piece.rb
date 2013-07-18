@@ -3,6 +3,7 @@ require_relative "../board"
 class Piece
   attr_accessor :x, :y
   attr_reader :color, :moves
+  attr_writer :position
 
   def initialize hsh
     @color = hsh[:color]
@@ -13,7 +14,7 @@ class Piece
 
   @@board = Board.new
 
-  def get_moves position
+  def get_moves
   end
 
 private
