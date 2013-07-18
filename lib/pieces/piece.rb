@@ -38,14 +38,23 @@ private
     @moves << hsh
   end
 
-  def behind_river? y
+  def behind_river? square
     if @color == :red
-      y <= 4
+      square.y <= 4
     else
-      y >= 5
+      square.y >= 5
     end
   end
 
-  def in_palace?
+  def in_palace? square
+    if square.x < 3 || square.x > 5
+      false
+    else
+      if @color == :red
+        square.y < 3
+      else
+        square.y > 8
+      end
+    end
   end
 end
