@@ -18,14 +18,4 @@ class Horse < Piece
       end
     end
   end
-
-private 
-  
-  def secondary_directions direction
-    if [:left, :right].include? direction
-      [:up, :down]
-    else
-      [:left, :right]
-    end
-  end 
 end
