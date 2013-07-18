@@ -49,4 +49,12 @@ private
       end
     end
   end
+
+  def forward
+    if @color == :red
+      :up
+    else
+      :down
+    end
+  end
 end
