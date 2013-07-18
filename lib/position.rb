@@ -22,10 +22,9 @@ class Position
   end
 
   def import hsh
-    hsh[:pieces].each do |piece|
-      place piece
-    end
+    hsh[:pieces].each { |piece| place piece }
     @to_move = hsh[:to_move]
+    get_moves
     self
   end
 
@@ -47,6 +46,17 @@ class Position
     @locations[hsh[:x]][hsh[:y]]
   end
 
+  def check?
+    export_data = export
+    export_data[:to_move] = not_to_move
+    test_position = Position.new.import export_data
+    general_coordinates = find_general
+    test_position.all_pieces.each do |piece|
+      return true if piece.moves.include? general_coordinates
+    end
+    false
+  end
+
 private
   
   def empty_locations
@@ -63,6 +73,18 @@ private
   def get_moves
     all_pieces.each do |piece|
       piece.get_moves self if piece.color == to_move
+    end
+  end
+
+  def not_to_move
+    @to_move == :red ? :black : :red
+  end
+
+  def find_general
+    all_pieces.each do |piece|
+      if piece.color == @to_move && piece.class == General
+        return { x: piece.x, y: piece.y }
+      end
     end
   end
 end
