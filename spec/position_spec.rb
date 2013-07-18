@@ -1,5 +1,4 @@
 require_relative "../lib/position"
-require_relative "../lib/pieces/piece"
 require_relative "../lib/starting_position"
 
 describe Position do
@@ -36,5 +35,22 @@ describe Position do
   it "knows whose turn it is" do
     position = StartingPosition.new
     position.to_move.should eql(:red)
+  end
+
+  it "does not consider moves from the wrong side to be legal" do
+    position = StartingPosition.new
+    position.find(x: 0, y:9).moves.empty?.should be(true)
+  end
+
+  it "can import position data" do
+    position = Position.new.import({
+      pieces: [
+        General.new({x: 4, y: 0, color: :red}),
+        General.new({x: 3, y: 0, color: :black}),
+        Chariot.new({x: 0, y: 0, color: :red})
+      ],
+      to_move: :red
+    })
+    position.find(x: 0, y: 0).class.should eql(Chariot)
   end
 end

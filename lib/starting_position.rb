@@ -1,11 +1,4 @@
 require_relative "./position.rb"
-require_relative "../lib/pieces/chariot"
-require_relative "../lib/pieces/horse"
-require_relative "../lib/pieces/elephant"
-require_relative "../lib/pieces/advisor"
-require_relative "../lib/pieces/general"
-require_relative "../lib/pieces/cannon"
-require_relative "../lib/pieces/soldier"
   
 class StartingPosition < Position
   
@@ -46,6 +39,7 @@ class StartingPosition < Position
     place Soldier.new   x: 6, y: 6, color: :black
     place Soldier.new   x: 8, y: 6, color: :black
 
+    @to_move = :red
     get_moves
   end
 end
