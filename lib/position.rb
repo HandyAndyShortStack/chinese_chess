@@ -1,7 +1,9 @@
 class Position
   attr_reader :sides
+  attr_accessor :to_move
 
   def initialize
+    @to_move = :red
     empty_locations
     empty_sides
     get_moves

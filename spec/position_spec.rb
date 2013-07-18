@@ -32,4 +32,9 @@ describe Position do
     position.find(x: 1, y:2).moves.include?({x: 1, y:9}).should be(true)
     position.find(x: 0, y:3).moves.include?({x: 0, y:4}).should be(true)
   end
+
+  it "knows whose turn it is" do
+    position = StartingPosition.new
+    position.to_move.should eql(:red)
+  end
 end
