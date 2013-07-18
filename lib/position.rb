@@ -50,7 +50,9 @@ class Position
     export_data = export
     export_data[:to_move] = not_to_move
     test_position = Position.new.import export_data
-    general_coordinates = find_general
+    general = find_general
+    return true if general.sees_other? self
+    general_coordinates = { x: general.x, y: general.y }
     test_position.all_pieces.each do |piece|
       return true if piece.moves.include? general_coordinates
     end
@@ -82,9 +84,7 @@ private
 
   def find_general
     all_pieces.each do |piece|
-      if piece.color == @to_move && piece.class == General
-        return { x: piece.x, y: piece.y }
-      end
+      return piece if piece.color == @to_move && piece.class == General
     end
   end
 end

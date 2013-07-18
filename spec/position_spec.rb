@@ -73,4 +73,15 @@ describe Position do
     position.check?.should be(true)
     StartingPosition.new.check?.should be(false)
   end
+
+  it "knows that generals cannot see each other" do
+    position = Position.new.import({
+      pieces: [
+        General.new({x: 4, y: 0, color: :red}),
+        General.new({x: 4, y: 9, color: :black})
+      ],
+      to_move: :red
+    })
+    position.check?.should be(true)
+  end
 end

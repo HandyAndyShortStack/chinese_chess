@@ -11,4 +11,18 @@ class General < Piece
       add_move target_square.coordinates
     end
   end
+
+  def sees_other? position
+    next_square = starting_square.send forward
+    while next_square
+      current_square = next_square
+      target_piece = position.find current_square.coordinates
+      if target_piece
+        return true if target_piece.class == General
+        break
+      end
+      next_square = current_square.send forward
+    end
+    false
+  end
 end
