@@ -52,5 +52,6 @@ describe Position do
       to_move: :red
     })
     position.find(x: 0, y: 0).class.should eql(Chariot)
+    position.to_move.should eql(:red)
   end
 end
