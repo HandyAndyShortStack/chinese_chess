@@ -45,5 +45,7 @@ class StartingPosition < Position
     place Soldier.new   x: 4, y: 6, color: :black
     place Soldier.new   x: 6, y: 6, color: :black
     place Soldier.new   x: 8, y: 6, color: :black
+
+    get_moves
   end
 end

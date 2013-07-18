@@ -13,6 +13,10 @@ class Square
     end
   end
 
+  def coordinates
+    { x: @x, y: @y }
+  end
+
 private
 
   def metaclass

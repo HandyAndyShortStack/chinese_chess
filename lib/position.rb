@@ -4,6 +4,7 @@ class Position
   def initialize
     empty_locations
     empty_sides
+    get_moves
   end
 
   def place piece
@@ -13,11 +14,13 @@ class Position
   end
 
   def all_pieces
-    unless @all_pieces
-      @all_pieces = @locations.values.flatten.map { |hsh| hsh.values[0] }
-      @all_pieces.compact!
+    pieces = []
+    @locations.keys.each do |x|
+      @locations[x].keys.each do |y|
+        pieces << @locations[x][y]
+      end
     end
-    @all_pieces
+    pieces
   end
 
   def find hsh
@@ -35,5 +38,11 @@ private
 
   def empty_sides
     @sides = {red: [], black: []}
+  end
+
+  def get_moves
+    all_pieces.each do |piece|
+      piece.get_moves self
+    end
   end
 end
