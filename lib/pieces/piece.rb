@@ -22,14 +22,6 @@ private
     [:left, :right, :up, :down]
   end
 
-  def secondary_directions direction
-    if [:left, :right].include? direction
-      [:up, :down]
-    else
-      [:left, :right]
-    end
-  end 
-
   def starting_square
     @@board.find x: @x, y: @y
   end

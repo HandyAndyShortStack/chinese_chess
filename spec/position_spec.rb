@@ -28,5 +28,6 @@ describe Position do
     position.find(x: 1, y:0).moves.include?({x: 2, y:2}).should be(true)
     position.find(x: 2, y:0).moves.include?({x: 0, y:2}).should be(true)
     position.find(x: 3, y:0).moves.include?({x: 4, y:1}).should be(true)
+    position.find(x: 4, y:0).moves.include?({x: 4, y:1}).should be(true)
   end
 end
