@@ -29,6 +29,10 @@ class Position
     self
   end
 
+  def export
+    { pieces: all_pieces, to_move: @to_move }
+  end
+
   def all_pieces
     pieces = []
     @locations.keys.each do |x|

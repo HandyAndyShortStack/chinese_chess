@@ -54,4 +54,23 @@ describe Position do
     position.find(x: 0, y: 0).class.should eql(Chariot)
     position.to_move.should eql(:red)
   end
+
+  it "can export position data" do
+    position_data = StartingPosition.new.export
+    position_data[:pieces][0].class.should be < Piece
+    position_data[:to_move].should eql(:red)
+  end
+
+  # it "knows whan a position is check" do
+  #   position = Position.new.import({
+  #     pieces: [
+  #       General.new({x: 4, y: 0, color: :red}),
+  #       General.new({x: 3, y: 0, color: :black}),
+  #       Chariot.new({x: 3, y: 1, color: :red})
+  #     ],
+  #     to_move: :black
+  #   })
+  #   position.check?.should be(true)
+  #   StartingPosition.new.check?.should be(false)
+  # end
 end
