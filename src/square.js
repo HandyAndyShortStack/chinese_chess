@@ -1,12 +1,6 @@
 function Square(x, y) {
-  Object.defineProperties(this, {
-    x: {
-      value: x
-    },
-    y: {
-      value: y
-    }
-  });
+  this.x = x;
+  this.y = y;
 }
 
 module.exports = Square;
