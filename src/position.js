@@ -1,9 +1,12 @@
+var Board = require('./board.js');
+
 function Position() {
   var toMove = 'red';
 
-  function place(piece, square) {
-    this[square] = piece;
-    piece.square = square;
+  function place(piece, coordinates) {
+    this[coordinates] = piece;
+    piece.square = this.BOARD[coordinates];
+    return this;
   }
 
   Object.defineProperties(this, {
@@ -15,5 +18,11 @@ function Position() {
     place: { value: place, enumerable: false }
   });
 }
+
+Position.prototype = {
+  BOARD: new Board()
+};
+
+debugger;
 
 module.exports = Position;

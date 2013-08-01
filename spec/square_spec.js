@@ -11,4 +11,8 @@ describe('Square', function() {
     expect(square.x).toEqual(0);
     expect(square.y).toEqual(0);
   });
+
+  it('returns coordinates', function() {
+    expect(square.coordinates).toEqual('0,0');
+  });
 });

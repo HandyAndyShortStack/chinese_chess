@@ -14,10 +14,11 @@ describe('Position', function() {
 
   it('can have pieces placed on it', function() {
     var piece = new Piece('red');
-    var square = { x: 0, y: 0 };
-    position.place(piece, square);
+    var coordinates = '0,0';
+    var square = position.BOARD[coordinates]
+    position.place(piece, coordinates);
 
-    expect(position[square]).toBe(piece);
+    expect(position[coordinates]).toBe(piece);
     expect(piece.square).toBe(square);
   });
 });
