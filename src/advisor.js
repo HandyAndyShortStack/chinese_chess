@@ -3,6 +3,8 @@ var Piece = require('./piece.js');
 function Advisor(color) {
   var self = new Piece(color);
 
+  self.type = "Advisor";
+
   self.getMoves = function(position) {
     var moves = [];
     var palace = position.BOARD.palaces[this.color];
@@ -31,7 +33,5 @@ function Advisor(color) {
 
   return self;
 }
-
-Advisor.prototype.constructor = Advisor;
 
 module.exports = Advisor;

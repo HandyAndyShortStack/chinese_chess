@@ -3,6 +3,8 @@ var Piece = require('./piece.js');
 function Horse(color) {
   var self = new Piece(color);
 
+  self.type = 'Horse'
+
   self.getMoves = function(position) {
     var moves = [];
     var directions = {
@@ -35,7 +37,5 @@ function Horse(color) {
 
   return self;
 }
-
-Horse.prototype.constructor = Horse;
 
 module.exports = Horse;

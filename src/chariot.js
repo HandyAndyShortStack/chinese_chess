@@ -3,6 +3,8 @@ var Piece = require('./piece.js');
 function Chariot(color) {
   var self = new Piece(color);
 
+  self.type = 'Chariot';
+
   self.getMoves = function(position) {
     var moves = [];
     var directions = ['left', 'right', 'up', 'down'];

@@ -3,6 +3,8 @@ var Piece = require('./piece.js');
 function Elephant(color) {
   var self = new Piece(color);
 
+  self.type = 'Elephant';
+
   self.getMoves = function(position) {
     var moves = [];
     var continent = position.BOARD.continents[this.color];
@@ -38,7 +40,5 @@ function Elephant(color) {
 
   return self;
 }
-
-Elephant.prototype.constructor = Elephant;
 
 module.exports = Elephant;
