@@ -56,8 +56,8 @@ function Position() {
   });
 }
 
-Position.prototype = {
-  BOARD: new Board()
-};
+Object.defineProperties(Position.prototype, {
+  BOARD: { value: new Board(), enumerable: false }
+});
 
 module.exports = Position;

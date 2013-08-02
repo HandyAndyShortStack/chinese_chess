@@ -23,4 +23,14 @@ describe('Position', function() {
 
     expect(position.isCheck).toBe(true);
   });
+
+  it('knows if the general is not in check', function() {
+    position.import({
+      '3,0': new General('red'),
+      '4,2': new Chariot('black') 
+    });
+    position.toMove = 'red'
+
+    expect(position.isCheck).toBe(false);
+  });
 });
