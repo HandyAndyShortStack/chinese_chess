@@ -21,7 +21,7 @@ function General(color) {
       }
     }
     return moves;
-  }
+  };
 
   return self;
 }
