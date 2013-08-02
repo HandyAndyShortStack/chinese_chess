@@ -21,4 +21,10 @@ describe('Position', function() {
     expect(position[coordinates]).toBe(piece);
     expect(piece.square).toBe(square);
   });
+
+  it('can import position data', function() {
+    position.import({ '0,0': new Piece('red') });
+
+    expect(position['0,0'].constructor.name).toEqual('Piece');
+  });
 });
