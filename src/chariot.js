@@ -27,4 +27,6 @@ function Chariot(color) {
   return self;
 }
 
+Chariot.prototype.constructor = Chariot;
+
 module.exports = Chariot;

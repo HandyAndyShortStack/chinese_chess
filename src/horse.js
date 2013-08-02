@@ -36,4 +36,6 @@ function Horse(color) {
   return self;
 }
 
+Horse.prototype.constructor = Horse;
+
 module.exports = Horse;

@@ -32,4 +32,6 @@ function Advisor(color) {
   return self;
 }
 
+Advisor.prototype.constructor = Advisor;
+
 module.exports = Advisor;

@@ -39,4 +39,6 @@ function Elephant(color) {
   return self;
 }
 
+Elephant.prototype.constructor = Elephant;
+
 module.exports = Elephant;
