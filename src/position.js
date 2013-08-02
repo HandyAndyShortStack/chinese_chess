@@ -38,6 +38,18 @@ function Position() {
         return true;
       }
     }
+    var forward = toMove === 'red' ? 'up' : 'down';
+    var next_square = self.BOARD[general_location][forward];
+    while (next_square) {
+      current_square = next_square;
+      if (self[current_square.coordinates]) {
+        if (self[current_square.coordinates].type === 'General') {
+          return true;
+        }
+        break;
+      }
+      next_square = current_square[forward];
+    }
     return false;
   }
 
