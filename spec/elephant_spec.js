@@ -22,4 +22,11 @@ describe('Elephant', function() {
     expect(moveList.indexOf('6,0')).not.toBe(-1);
     expect(moveList.indexOf('2,4')).toBe(-1);
   });
+
+  it('cannot move outside of its continent', function() {
+    position.import({ '2,4': elephant });
+    var moveList = elephant.getMoves(position);
+    
+    expect(moveList.indexOf('4,6')).toBe(-1);
+  });
 });

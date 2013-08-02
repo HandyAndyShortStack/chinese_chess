@@ -21,4 +21,9 @@ describe('Board', function() {
     expect(square.right.constructor.name).toEqual('Square');
     expect(square.up.constructor.name).toEqual('Square');
   });
+
+  it('has continents', function() {
+    expect(board.continents.red).toBeDefined
+    expect(board.continents.black).toBeDefined
+  })
 });

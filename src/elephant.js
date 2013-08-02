@@ -5,6 +5,7 @@ function Elephant(color) {
 
   self.getMoves = function(position) {
     var moves = [];
+    var continent = position.BOARD.continents[this.color];
     var directions = [
       ['left', 'up'],
       ['up', 'right'],
@@ -24,6 +25,9 @@ function Elephant(color) {
         continue;
       }
       var target_square = blocking_square[direction[0]][direction[1]];
+      if (!continent[target_square.coordinates]) {
+        continue;
+      }
       if (!position[target_square.coordinates] ||
         position[target_square.coordinates].color !== this.color) {
         moves.push(target_square.coordinates);
