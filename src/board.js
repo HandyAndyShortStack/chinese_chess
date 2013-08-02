@@ -3,6 +3,7 @@ var Square = require('./square.js');
 function Board() {
 
   var continents = { red: {}, black: {} };
+  var palaces = { red: {}, black: {} };
 
   for (var x = 0; x < 9; x += 1) {
     for (var y = 0; y < 10; y += 1) {
@@ -18,11 +19,17 @@ function Board() {
       } else {
         continents.black[coordinates] = square;
       }
+      if (y < 3 && x < 6 && x > 2) {
+        palaces.red[coordinates] = square;
+      } else if (y > 6 && x < 6 && x > 2) {
+        palaces.black[coordinates] = square;
+      }
     }
   }
 
   Object.defineProperties(this, {
-    continents: { value: continents, enumerable: false }
+    continents: { value: continents, enumerable: false },
+    palaces: { value: palaces, enumerable: false }
   });
 }
 
