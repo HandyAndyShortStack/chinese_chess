@@ -8,10 +8,6 @@ describe('Position', function() {
     position = new Position();
   });
 
-  it('knows whose turn it is', function() {
-    expect(position.toMove).toEqual('red');
-  });
-
   it('can have pieces placed on it', function() {
     var piece = new Piece('red');
     var coordinates = '0,0';

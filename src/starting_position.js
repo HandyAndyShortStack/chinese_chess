@@ -1,5 +1,4 @@
 var Position = require('./position.js');
-var Piece = require('./piece.js');
 var Chariot = require('./chariot.js');
 var Horse = require('./horse.js');
 var Elephant = require('./elephant.js');
