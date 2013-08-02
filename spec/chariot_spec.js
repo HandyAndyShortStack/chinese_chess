@@ -2,12 +2,12 @@ var Chariot = require('../src/chariot.js');
 var Position = require('../src/position.js');
 
 describe('Chariot', function() {
-  var position;
   var chariot;
+  var position;
 
   beforeEach(function() {
-    position = new Position();
     chariot = new Chariot('red');
+    position = new Position();
   });
 
   it('gives an accurate move list', function() {
