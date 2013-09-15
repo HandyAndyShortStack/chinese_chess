@@ -9,7 +9,6 @@ var Soldier = require('./soldier.js');
 
 function StartingPosition() {
   var self = new Position();
-  var BOARD = self.BOARD;
 
   self.place(new Chariot('red'), [0, 0])
     .place(new Horse('red'), [1, 0])
@@ -43,6 +42,8 @@ function StartingPosition() {
     .place(new Soldier('black'), [4, 6])
     .place(new Soldier('black'), [6, 6])
     .place(new Soldier('black'), [8, 6]);
+
+  self.toMove = 'red';
 
   return self;
 }
