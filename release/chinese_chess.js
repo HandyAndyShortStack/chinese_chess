@@ -227,18 +227,20 @@ function Game() {
   }
 
   function isLegal(startingCoordinates, endingCoordinates) {
-    var piece = position[startingCoordinates];
-    if (typeof piece.color === 'undefined') {
-      console.log(piece.color);
-    }
-    if (piece.color !== position.toMove) {
+    var movingPiece = position[startingCoordinates];
+    var attackedPiece = position[endingCoordinates];
+
+    if (movingPiece.color !== position.toMove) {
       return false;
     }
     move(startingCoordinates, endingCoordinates);
     toggleToMove();
     var legal = position.isCheck ? false : true;
     delete position[endingCoordinates];
-    position.place(piece, startingCoordinates);
+    position.place(movingPiece, startingCoordinates);
+    if (typeof attackedPiece !== 'undefined') {
+      position.place(attackedPiece, endingCoordinates);
+    }
     return legal;
   }
 
