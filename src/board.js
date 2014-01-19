@@ -1,4 +1,7 @@
-var Square = require('./square.js');
+if (typeof window === 'undefined') {
+  var Square = require('./square.js');
+  module.exports = Board;
+}
 
 function Board() {
 
@@ -32,5 +35,3 @@ function Board() {
     palaces: { value: palaces, enumerable: false }
   });
 }
-
-module.exports = Board;

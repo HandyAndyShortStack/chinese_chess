@@ -1,5 +1,8 @@
-var Position = require('./position.js');
-var StartingPosition = require('./starting_position.js');
+if (typeof window === 'undefined') {
+  var Position = require('./position.js');
+  var StartingPosition = require('./starting_position.js');
+  module.exports = Game;
+}
 
 function Game() {
   var position = new StartingPosition;
@@ -24,15 +27,20 @@ function Game() {
   }
 
   function isLegal(startingCoordinates, endingCoordinates) {
-    var piece = position[startingCoordinates];
-    if (piece.color !== position.toMove) {
+    var movingPiece = position[startingCoordinates];
+    var attackedPiece = position[endingCoordinates];
+
+    if (movingPiece.color !== position.toMove) {
       return false;
     }
     move(startingCoordinates, endingCoordinates);
     toggleToMove();
     var legal = position.isCheck ? false : true;
     delete position[endingCoordinates];
-    position.place(piece, startingCoordinates);
+    position.place(movingPiece, startingCoordinates);
+    if (typeof attackedPiece !== 'undefined') {
+      position.place(attackedPiece, endingCoordinates);
+    }
     return legal;
   }
 
@@ -72,5 +80,3 @@ function Game() {
     }
   });
 }
-
-module.exports = Game;

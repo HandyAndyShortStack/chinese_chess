@@ -1,4 +1,7 @@
-var Piece = require('./piece.js');
+if (typeof window === 'undefined') {
+  var Piece = require('./piece.js');
+  module.exports = Cannon;
+}
 
 function Cannon(color) {
   var self = new Piece(color);
@@ -37,4 +40,3 @@ function Cannon(color) {
   return self;
 }
 
-module.exports = Cannon;

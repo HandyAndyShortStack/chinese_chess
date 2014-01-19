@@ -1,4 +1,7 @@
-var Board = require('./board.js');
+if (typeof window === 'undefined') {
+  var Board = require('./board.js');
+  module.exports = Position;
+}
 
 function Position() {
   var self = this;
@@ -83,5 +86,3 @@ function Position() {
 Object.defineProperties(Position.prototype, {
   BOARD: { value: new Board(), enumerable: false }
 });
-
-module.exports = Position;

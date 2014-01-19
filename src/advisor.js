@@ -1,4 +1,7 @@
-var Piece = require('./piece.js');
+if (typeof window === 'undefined') {
+  var Piece = require('./piece.js');
+  module.exports = Advisor;
+}
 
 function Advisor(color) {
   var self = new Piece(color);
@@ -33,5 +36,3 @@ function Advisor(color) {
 
   return self;
 }
-
-module.exports = Advisor;
