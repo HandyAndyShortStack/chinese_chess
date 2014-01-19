@@ -1,3 +1,7 @@
+if (typeof window === 'undefined') {
+  module.exports = Square;
+}
+
 function Square(x, y) {
   var left;
   var right;
@@ -27,5 +31,3 @@ function Square(x, y) {
     }
   });
 }
-
-module.exports = Square;

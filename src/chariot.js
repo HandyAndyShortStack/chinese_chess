@@ -1,4 +1,7 @@
-var Piece = require('./piece.js');
+if (typeof window === 'undefined') {
+  var Piece = require('./piece.js');
+  module.exports = Chariot;
+}
 
 function Chariot(color) {
   var self = new Piece(color);
@@ -28,5 +31,3 @@ function Chariot(color) {
 
   return self;
 }
-
-module.exports = Chariot;
