@@ -33,7 +33,21 @@ describe('Game', function() {
   });
 
   it('can return a list of legal moves', function() {
-    game.importPosition({'3,0': new General('red'), '4,9': new General('black')})
+    game.importPosition({
+      '3,0': new General('red'), 
+      '4,9': new General('black')
+    });
+
     expect(game.legalMoves['3,0'].length).toBe(1);
+  });
+
+  it('knows if the position is checkmate', function() {
+    game.importPosition({
+      '3,0': new General('red'), 
+      '4,9': new General('black'),
+      '2,1': new Soldier('black')
+    });
+
+    expect(game.isCheckmate).toBeTruthy();
   });
 });

@@ -12,10 +12,15 @@ function Game() {
     }
   }
 
+  function toggleToMove() {
+    position.toMove = position.toMove === 'red' ? 'black' : 'red';
+  }
+
   function move(startingCoordinates, targetCoordinates) {
     var piece = position[startingCoordinates];
     delete position[startingCoordinates];
     position.place(piece, targetCoordinates);
+    toggleToMove();
   }
 
   function isLegal(startingCoordinates, endingCoordinates) {
@@ -24,6 +29,7 @@ function Game() {
       return false;
     }
     move(startingCoordinates, endingCoordinates);
+    toggleToMove();
     var legal = position.isCheck ? false : true;
     delete position[endingCoordinates];
     position.place(piece, startingCoordinates);
@@ -48,6 +54,10 @@ function Game() {
     return moves;
   }
 
+  function isCheckmate() {
+    return Object.keys(legalMoves).length === 0
+  }
+
   Object.defineProperties(this, {
     position: {
       get: function() { return position; }
@@ -56,6 +66,9 @@ function Game() {
     move: { value: move },
     legalMoves: { 
       get: function() { return legalMoves(); }
+    },
+    isCheckmate: {
+      get: function() { return isCheckmate(); }
     }
   });
 }
