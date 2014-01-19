@@ -2,7 +2,7 @@ var Board = require('./board.js');
 
 function Position() {
   var self = this;
-  var toMove;
+  var toMove = 'red';
 
   function place(piece, coordinates) {
     this[coordinates] = piece;
@@ -14,7 +14,7 @@ function Position() {
     for (var key in position) {
       this.place(position[key], key)
     }
-    this.toMove = position.toMove;
+    this.toMove = position.toMove || toMove;
     return this;
   }
 
@@ -53,6 +53,14 @@ function Position() {
     return false;
   }
 
+  function rawMoves() {
+    var moves = {};
+    for (var coordinates in self) {
+      moves[coordinates] = self[coordinates].getMoves(self);
+    }
+    return moves;
+  }
+
   Object.defineProperties(this, {
     toMove: {
       get: function() { return toMove; },
@@ -63,6 +71,10 @@ function Position() {
     'import': { value: _import, enumerable: false },
     isCheck: {
       get: function() { return isCheck(); },
+      enumerable: false
+    },
+    rawMoves: {
+      get: function() { return rawMoves(); },
       enumerable: false
     }
   });

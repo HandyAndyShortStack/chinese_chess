@@ -23,12 +23,12 @@ describe('Board', function() {
   });
 
   it('has continents', function() {
-    expect(board.continents.red).toBeDefined
-    expect(board.continents.black).toBeDefined
+    expect(board.continents.red).toBeDefined();
+    expect(board.continents.black).toBeDefined();
   });
 
   it('has palaces', function() {
-    expect(board.palaces.red).toBeDefined
-    expect(board.palaces.black).toBeDefined
+    expect(board.palaces.red).toBeDefined();
+    expect(board.palaces.black).toBeDefined();
   });
 });
