@@ -41,6 +41,11 @@ describe('Game', function() {
     expect(game.legalMoves['3,0'].length).toBe(1);
   });
 
+  it('replaces attacked pieces when checking move legality', function() {
+    game.isCheckmate;
+    expect(game.position['1,9']).toBeDefined();
+  });
+
   it('knows if the position is checkmate', function() {
     game.importPosition({
       '3,0': new General('red'), 
