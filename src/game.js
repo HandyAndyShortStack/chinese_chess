@@ -53,9 +53,9 @@ function Game() {
         var endingCoordinates = endingSquares[i];
         if (isLegal(startingCoordinates, endingCoordinates)) {
           if (typeof moves[startingCoordinates] === 'undefined') {
-            moves[startingCoordinates] = []
+            moves[startingCoordinates] = [];
           }
-          moves[startingCoordinates].push(endingCoordinates)
+          moves[startingCoordinates].push(endingCoordinates);
         }
       }
     }
@@ -63,7 +63,7 @@ function Game() {
   }
 
   function isCheckmate() {
-    return Object.keys(legalMoves).length === 0
+    return Object.keys(legalMoves).length === 0;
   }
 
   Object.defineProperties(this, {
