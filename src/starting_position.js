@@ -1,14 +1,12 @@
-if (typeof window === 'undefined') {
-  var Position = require('./position.js');
-  var Chariot = require('./chariot.js');
-  var Horse = require('./horse.js');
-  var Elephant = require('./elephant.js');
-  var Advisor = require('./advisor.js');
-  var General = require('./general.js');
-  var Cannon = require('./cannon.js');
-  var Soldier = require('./soldier.js');
-  module.exports = StartingPosition;
-}
+var Position = require('./position.js');
+var Chariot = require('./chariot.js');
+var Horse = require('./horse.js');
+var Elephant = require('./elephant.js');
+var Advisor = require('./advisor.js');
+var General = require('./general.js');
+var Cannon = require('./cannon.js');
+var Soldier = require('./soldier.js');
+module.exports = StartingPosition;
 
 function StartingPosition() {
   var self = new Position();

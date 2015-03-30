@@ -1,8 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Advisor;
-}
+var Piece = require('./piece.js');
+module.exports = Advisor;
 
 function Advisor(color) {
   var self = new Piece(color);
@@ -39,10 +37,8 @@ function Advisor(color) {
 }
 
 },{"./piece.js":9}],2:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Square = require('./square.js');
-  module.exports = Board;
-}
+var Square = require('./square.js');
+module.exports = Board;
 
 function Board() {
 
@@ -78,10 +74,8 @@ function Board() {
 }
 
 },{"./square.js":12}],3:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Cannon;
-}
+var Piece = require('./piece.js');
+module.exports = Cannon;
 
 function Cannon(color) {
   var self = new Piece(color);
@@ -122,10 +116,8 @@ function Cannon(color) {
 
 
 },{"./piece.js":9}],4:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Chariot;
-}
+var Piece = require('./piece.js');
+module.exports = Chariot;
 
 function Chariot(color) {
   var self = new Piece(color);
@@ -157,10 +149,8 @@ function Chariot(color) {
 }
 
 },{"./piece.js":9}],5:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Elephant;
-}
+var Piece = require('./piece.js');
+module.exports = Elephant;
 
 function Elephant(color) {
   var self = new Piece(color);
@@ -204,11 +194,9 @@ function Elephant(color) {
 }
 
 },{"./piece.js":9}],6:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Position = require('./position.js');
-  var StartingPosition = require('./starting_position.js');
-  module.exports = Game;
-}
+var Position = require('./position.js');
+var StartingPosition = require('./starting_position.js');
+module.exports = Game;
 
 function Game() {
   var position = new StartingPosition;
@@ -288,10 +276,8 @@ function Game() {
 }
 
 },{"./position.js":10,"./starting_position.js":13}],7:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = General;
-}
+var Piece = require('./piece.js');
+module.exports = General;
 
 function General(color) {
   var self = new Piece(color);
@@ -320,10 +306,8 @@ function General(color) {
 }
 
 },{"./piece.js":9}],8:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Horse;
-}
+var Piece = require('./piece.js');
+module.exports = Horse;
 
 function Horse(color) {
   var self = new Piece(color);
@@ -364,19 +348,15 @@ function Horse(color) {
 }
 
 },{"./piece.js":9}],9:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  module.exports = Piece;
-}
+module.exports = Piece;
 
 function Piece(color) {
   this.color = color;
 }
 
 },{}],10:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Board = require('./board.js');
-  module.exports = Position;
-}
+var Board = require('./board.js');
+module.exports = Position;
 
 function Position() {
   var self = this;
@@ -463,10 +443,8 @@ Object.defineProperties(Position.prototype, {
 });
 
 },{"./board.js":2}],11:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Soldier;
-}
+var Piece = require('./piece.js');
+module.exports = Soldier;
 
 function Soldier(color) {
   var self = new Piece(color);
@@ -500,9 +478,7 @@ function Soldier(color) {
 }
 
 },{"./piece.js":9}],12:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  module.exports = Square;
-}
+module.exports = Square;
 
 function Square(x, y) {
   var left;
@@ -535,17 +511,15 @@ function Square(x, y) {
 }
 
 },{}],13:[function(require,module,exports){
-if (typeof window === 'undefined') {
-  var Position = require('./position.js');
-  var Chariot = require('./chariot.js');
-  var Horse = require('./horse.js');
-  var Elephant = require('./elephant.js');
-  var Advisor = require('./advisor.js');
-  var General = require('./general.js');
-  var Cannon = require('./cannon.js');
-  var Soldier = require('./soldier.js');
-  module.exports = StartingPosition;
-}
+var Position = require('./position.js');
+var Chariot = require('./chariot.js');
+var Horse = require('./horse.js');
+var Elephant = require('./elephant.js');
+var Advisor = require('./advisor.js');
+var General = require('./general.js');
+var Cannon = require('./cannon.js');
+var Soldier = require('./soldier.js');
+module.exports = StartingPosition;
 
 function StartingPosition() {
   var self = new Position();

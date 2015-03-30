@@ -1,8 +1,6 @@
-if (typeof window === 'undefined') {
-  var Position = require('./position.js');
-  var StartingPosition = require('./starting_position.js');
-  module.exports = Game;
-}
+var Position = require('./position.js');
+var StartingPosition = require('./starting_position.js');
+module.exports = Game;
 
 function Game() {
   var position = new StartingPosition;

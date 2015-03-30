@@ -1,7 +1,5 @@
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Horse;
-}
+var Piece = require('./piece.js');
+module.exports = Horse;
 
 function Horse(color) {
   var self = new Piece(color);

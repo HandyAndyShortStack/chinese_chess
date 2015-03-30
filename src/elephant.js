@@ -1,7 +1,5 @@
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Elephant;
-}
+var Piece = require('./piece.js');
+module.exports = Elephant;
 
 function Elephant(color) {
   var self = new Piece(color);
