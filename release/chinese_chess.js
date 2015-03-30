@@ -1,7 +1,6 @@
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Advisor;
-}
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var Piece = require('./piece.js');
+module.exports = Advisor;
 
 function Advisor(color) {
   var self = new Piece(color);
@@ -37,10 +36,9 @@ function Advisor(color) {
   return self;
 }
 
-if (typeof window === 'undefined') {
-  var Square = require('./square.js');
-  module.exports = Board;
-}
+},{"./piece.js":9}],2:[function(require,module,exports){
+var Square = require('./square.js');
+module.exports = Board;
 
 function Board() {
 
@@ -75,10 +73,9 @@ function Board() {
   });
 }
 
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Cannon;
-}
+},{"./square.js":12}],3:[function(require,module,exports){
+var Piece = require('./piece.js');
+module.exports = Cannon;
 
 function Cannon(color) {
   var self = new Piece(color);
@@ -118,10 +115,9 @@ function Cannon(color) {
 }
 
 
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Chariot;
-}
+},{"./piece.js":9}],4:[function(require,module,exports){
+var Piece = require('./piece.js');
+module.exports = Chariot;
 
 function Chariot(color) {
   var self = new Piece(color);
@@ -152,10 +148,9 @@ function Chariot(color) {
   return self;
 }
 
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Elephant;
-}
+},{"./piece.js":9}],5:[function(require,module,exports){
+var Piece = require('./piece.js');
+module.exports = Elephant;
 
 function Elephant(color) {
   var self = new Piece(color);
@@ -198,11 +193,10 @@ function Elephant(color) {
   return self;
 }
 
-if (typeof window === 'undefined') {
-  var Position = require('./position.js');
-  var StartingPosition = require('./starting_position.js');
-  module.exports = Game;
-}
+},{"./piece.js":9}],6:[function(require,module,exports){
+var Position = require('./position.js');
+var StartingPosition = require('./starting_position.js');
+module.exports = Game;
 
 function Game() {
   var position = new StartingPosition;
@@ -253,9 +247,9 @@ function Game() {
         var endingCoordinates = endingSquares[i];
         if (isLegal(startingCoordinates, endingCoordinates)) {
           if (typeof moves[startingCoordinates] === 'undefined') {
-            moves[startingCoordinates] = []
+            moves[startingCoordinates] = [];
           }
-          moves[startingCoordinates].push(endingCoordinates)
+          moves[startingCoordinates].push(endingCoordinates);
         }
       }
     }
@@ -263,7 +257,7 @@ function Game() {
   }
 
   function isCheckmate() {
-    return Object.keys(legalMoves).length === 0
+    return Object.keys(legalMoves).length === 0;
   }
 
   Object.defineProperties(this, {
@@ -281,10 +275,9 @@ function Game() {
   });
 }
 
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = General;
-}
+},{"./position.js":10,"./starting_position.js":13}],7:[function(require,module,exports){
+var Piece = require('./piece.js');
+module.exports = General;
 
 function General(color) {
   var self = new Piece(color);
@@ -312,10 +305,9 @@ function General(color) {
   return self;
 }
 
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Horse;
-}
+},{"./piece.js":9}],8:[function(require,module,exports){
+var Piece = require('./piece.js');
+module.exports = Horse;
 
 function Horse(color) {
   var self = new Piece(color);
@@ -355,18 +347,16 @@ function Horse(color) {
   return self;
 }
 
-if (typeof window === 'undefined') {
-  module.exports = Piece;
-}
+},{"./piece.js":9}],9:[function(require,module,exports){
+module.exports = Piece;
 
 function Piece(color) {
   this.color = color;
 }
 
-if (typeof window === 'undefined') {
-  var Board = require('./board.js');
-  module.exports = Position;
-}
+},{}],10:[function(require,module,exports){
+var Board = require('./board.js');
+module.exports = Position;
 
 function Position() {
   var self = this;
@@ -452,10 +442,9 @@ Object.defineProperties(Position.prototype, {
   BOARD: { value: new Board(), enumerable: false }
 });
 
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Soldier;
-}
+},{"./board.js":2}],11:[function(require,module,exports){
+var Piece = require('./piece.js');
+module.exports = Soldier;
 
 function Soldier(color) {
   var self = new Piece(color);
@@ -488,9 +477,8 @@ function Soldier(color) {
   return self;
 }
 
-if (typeof window === 'undefined') {
-  module.exports = Square;
-}
+},{"./piece.js":9}],12:[function(require,module,exports){
+module.exports = Square;
 
 function Square(x, y) {
   var left;
@@ -522,17 +510,16 @@ function Square(x, y) {
   });
 }
 
-if (typeof window === 'undefined') {
-  var Position = require('./position.js');
-  var Chariot = require('./chariot.js');
-  var Horse = require('./horse.js');
-  var Elephant = require('./elephant.js');
-  var Advisor = require('./advisor.js');
-  var General = require('./general.js');
-  var Cannon = require('./cannon.js');
-  var Soldier = require('./soldier.js');
-  module.exports = StartingPosition;
-}
+},{}],13:[function(require,module,exports){
+var Position = require('./position.js');
+var Chariot = require('./chariot.js');
+var Horse = require('./horse.js');
+var Elephant = require('./elephant.js');
+var Advisor = require('./advisor.js');
+var General = require('./general.js');
+var Cannon = require('./cannon.js');
+var Soldier = require('./soldier.js');
+module.exports = StartingPosition;
 
 function StartingPosition() {
   var self = new Position();
@@ -574,3 +561,5 @@ function StartingPosition() {
 
   return self;
 }
+
+},{"./advisor.js":1,"./cannon.js":3,"./chariot.js":4,"./elephant.js":5,"./general.js":7,"./horse.js":8,"./position.js":10,"./soldier.js":11}]},{},[6]);

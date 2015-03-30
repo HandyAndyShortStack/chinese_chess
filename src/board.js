@@ -1,7 +1,5 @@
-if (typeof window === 'undefined') {
-  var Square = require('./square.js');
-  module.exports = Board;
-}
+var Square = require('./square.js');
+module.exports = Board;
 
 function Board() {
 

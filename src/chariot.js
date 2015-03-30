@@ -1,7 +1,5 @@
-if (typeof window === 'undefined') {
-  var Piece = require('./piece.js');
-  module.exports = Chariot;
-}
+var Piece = require('./piece.js');
+module.exports = Chariot;
 
 function Chariot(color) {
   var self = new Piece(color);

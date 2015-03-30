@@ -8,8 +8,13 @@
     "chinese",
     "chess"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "browserify": "~>9.0.3"
+  },
   "engines": {
     "node": "*"
+  },
+  "scripts": {
+    "build": "browserify src/game.js -o release/chinese_chess.js"
   }
 }

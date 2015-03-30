@@ -1,6 +1,4 @@
-if (typeof window === 'undefined') {
-  module.exports = Piece;
-}
+module.exports = Piece;
 
 function Piece(color) {
   this.color = color;

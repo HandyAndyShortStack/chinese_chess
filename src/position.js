@@ -1,7 +1,5 @@
-if (typeof window === 'undefined') {
-  var Board = require('./board.js');
-  module.exports = Position;
-}
+var Board = require('./board.js');
+module.exports = Position;
 
 function Position() {
   var self = this;
