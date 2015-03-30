@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Piece = require('./piece.js');
   module.exports = Advisor;
@@ -37,6 +38,7 @@ function Advisor(color) {
   return self;
 }
 
+},{"./piece.js":9}],2:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Square = require('./square.js');
   module.exports = Board;
@@ -75,6 +77,7 @@ function Board() {
   });
 }
 
+},{"./square.js":12}],3:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Piece = require('./piece.js');
   module.exports = Cannon;
@@ -118,6 +121,7 @@ function Cannon(color) {
 }
 
 
+},{"./piece.js":9}],4:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Piece = require('./piece.js');
   module.exports = Chariot;
@@ -152,6 +156,7 @@ function Chariot(color) {
   return self;
 }
 
+},{"./piece.js":9}],5:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Piece = require('./piece.js');
   module.exports = Elephant;
@@ -198,6 +203,7 @@ function Elephant(color) {
   return self;
 }
 
+},{"./piece.js":9}],6:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Position = require('./position.js');
   var StartingPosition = require('./starting_position.js');
@@ -253,9 +259,9 @@ function Game() {
         var endingCoordinates = endingSquares[i];
         if (isLegal(startingCoordinates, endingCoordinates)) {
           if (typeof moves[startingCoordinates] === 'undefined') {
-            moves[startingCoordinates] = []
+            moves[startingCoordinates] = [];
           }
-          moves[startingCoordinates].push(endingCoordinates)
+          moves[startingCoordinates].push(endingCoordinates);
         }
       }
     }
@@ -263,7 +269,7 @@ function Game() {
   }
 
   function isCheckmate() {
-    return Object.keys(legalMoves).length === 0
+    return Object.keys(legalMoves).length === 0;
   }
 
   Object.defineProperties(this, {
@@ -281,6 +287,7 @@ function Game() {
   });
 }
 
+},{"./position.js":10,"./starting_position.js":13}],7:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Piece = require('./piece.js');
   module.exports = General;
@@ -312,6 +319,7 @@ function General(color) {
   return self;
 }
 
+},{"./piece.js":9}],8:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Piece = require('./piece.js');
   module.exports = Horse;
@@ -355,6 +363,7 @@ function Horse(color) {
   return self;
 }
 
+},{"./piece.js":9}],9:[function(require,module,exports){
 if (typeof window === 'undefined') {
   module.exports = Piece;
 }
@@ -363,6 +372,7 @@ function Piece(color) {
   this.color = color;
 }
 
+},{}],10:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Board = require('./board.js');
   module.exports = Position;
@@ -452,6 +462,7 @@ Object.defineProperties(Position.prototype, {
   BOARD: { value: new Board(), enumerable: false }
 });
 
+},{"./board.js":2}],11:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Piece = require('./piece.js');
   module.exports = Soldier;
@@ -488,6 +499,7 @@ function Soldier(color) {
   return self;
 }
 
+},{"./piece.js":9}],12:[function(require,module,exports){
 if (typeof window === 'undefined') {
   module.exports = Square;
 }
@@ -522,6 +534,7 @@ function Square(x, y) {
   });
 }
 
+},{}],13:[function(require,module,exports){
 if (typeof window === 'undefined') {
   var Position = require('./position.js');
   var Chariot = require('./chariot.js');
@@ -574,3 +587,5 @@ function StartingPosition() {
 
   return self;
 }
+
+},{"./advisor.js":1,"./cannon.js":3,"./chariot.js":4,"./elephant.js":5,"./general.js":7,"./horse.js":8,"./position.js":10,"./soldier.js":11}]},{},[6]);
