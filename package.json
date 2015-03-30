@@ -2,7 +2,7 @@
   "author": "Andy Short",
   "name": "chinese_chess",
   "description": "javascript implementation of chinese chess",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./src/game",
   "keywords": [
     "chinese",
