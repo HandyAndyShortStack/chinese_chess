@@ -9,7 +9,7 @@
     "chess"
   ],
   "dependencies": {
-    "browserify": "latest"
+    "browserify": "~>9.0.3"
   },
   "engines": {
     "node": "*"
