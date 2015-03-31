@@ -61,7 +61,7 @@ function Game() {
   }
 
   function isCheckmate() {
-    return Object.keys(legalMoves).length === 0;
+    return Object.keys(legalMoves()).length === 0;
   }
 
   Object.defineProperties(this, {

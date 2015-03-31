@@ -55,4 +55,8 @@ describe('Game', function() {
 
     expect(game.isCheckmate).toBeTruthy();
   });
+
+  it('knows if the position is not checkmate', function() {
+    expect(game.isCheckmate).toBeFalsy();
+  })
 });
